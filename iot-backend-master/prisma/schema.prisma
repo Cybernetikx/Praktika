@@ -1,0 +1,47 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int      @id @default(autoincrement())
+  username String   @unique
+  name     String?
+  password String
+  devices  Device[]
+}
+
+model Device {
+  id        Int      @id @default(autoincrement())
+  name      String
+  comment   String?
+  sensors   Sensor[]
+  latitude  Float
+  longitude Float
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+}
+
+model Sensor {
+  id       Int           @id @default(autoincrement())
+  name     String
+  comment  String?
+  device   Device        @relation(fields: [deviceId], references: [id])
+  deviceId Int
+  values   SensorValue[]
+}
+
+model SensorValue {
+  id        Int      @id @default(autoincrement())
+  value     Float
+  timestamp DateTime
+  sensor    Sensor   @relation(fields: [sensorId], references: [id])
+  sensorId  Int
+}

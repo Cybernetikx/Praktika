@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swagger API</title>
+    <link rel="stylesheet" href="index.html">
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
+
+</head>
+<body>
+    <header class="Shapka">
+        <span id="user" class="user"></span>
+        <h2 class="kabinet">Личный кабинет</h2>
+        <div class="exit"><button onclick="document.location='index.html'">Выйти из акаунта</button></div>
+    </header>
+    <div id="map" style="height: 440px; width: 100%;position:fixed; margin-bottom: 45em; z-index: 1;"></div>
+    <div class="Blocks">
+        <div 
+            class="DeviceBlock">
+                <p>Устройства</p>
+        </div>
+        <div
+            class="SensorBlock">
+                
+        </div>
+        <div
+            class="DataBlock">
+                <p>Данные с датчиков</p>
+        </div>
+    </div>
+    <!-- Подключаем Axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="module" src="/src/swagger.js"></script>
+    <script src="/src/auth.js"></script>
+
+</body>
+</html>
